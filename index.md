@@ -1,4 +1,4 @@
-# Title of Your Project
+# Band Festivities
 
 **CISC320 Spring 2023 Lesson 14 - Graph Applications**
 
@@ -34,6 +34,34 @@ import networkx as nx
 
 **Setup code**:
 
+G = nx.Graph()
+
+# Add 22 nodes to the graph
+G.add_nodes_from(range(1, 23))
+
+# Add edges between each node and every other node
+for i in range(1, 23):
+    for j in range(i + 1, 23):
+        G.add_edge(i, j)
+
+# Add edge between last and first node to create a loop
+G.add_edge(22, 1)
+
+# Print the graph information
+print(nx.info(G))
+
+
+// Create nodes:
+G=nx.Graph()
+H=nx.path_graph(22)
+G.add_nodes_from(H)
+G.add_node(H)
+
+//Create edges:
+G.add_edge(1,2)
+e=(2,3)
+G.add_edge(*e)
+G.add_edges_from([(1,2),(1,3)])
 ```python
 ```
 
