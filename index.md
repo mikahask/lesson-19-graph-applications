@@ -81,6 +81,7 @@ nx.draw_networkx_edges(G, pos, width=weights)
 # Show the graph
 plt.axis('off')
 plt.show()
+nx.draw(G)
 
 
 ```
@@ -90,6 +91,7 @@ plt.show()
 ```
 plt.axis('off')
 plt.show()
+nx.draw(G)
 
 
 ```
