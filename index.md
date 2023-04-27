@@ -13,6 +13,7 @@ It's a band festival! There are bands playing at a local park, however no band c
 
 ```sh
 $> pip install networkx
+import matplotlib.pyplot as plt
 ```
 
 ## Python Environment Setup
@@ -67,8 +68,19 @@ print(nx.info(G))
 ```python
 
 
-mst = nx.minimum_spanning_tree(G)
-print(nx.info(mst))
+pos = nx.circular_layout(G)
+
+# Get the weights of the edges
+weights = [G[u][v]['weight'] for u,v in G.edges()]
+
+# Draw the nodes and edges of the graph
+nx.draw_networkx_nodes(G, pos, node_color='lightblue')
+nx.draw_networkx_labels(G, pos)
+nx.draw_networkx_edges(G, pos, width=weights)
+
+# Show the graph
+plt.axis('off')
+plt.show()
 
 
 ```
