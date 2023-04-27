@@ -64,13 +64,9 @@ print(nx.info(G))
 
 **Solution code:**
 
-G = nx.cycle_graph(4)
-G.add_edge(0, 3, weight=2)
-T = nx.minimum_spanning_tree(G)
-sorted(T.edges(data=True))
-[(0, 1, {}), (1, 2, {}), (2, 3, {})]
-
 ```python
+mst = nx.minimum_spanning_tree(G)
+print(nx.info(mst))
 ```
 
 **Output**
