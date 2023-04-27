@@ -62,7 +62,16 @@ print(nx.info(G))
 
 ![Image goes here](Relative image filename goes here)
 
+**Solution code:**
 
+```python
+
+
+mst = nx.minimum_spanning_tree(G)
+print(nx.info(mst))
+
+
+```
 
 **Output**
 
