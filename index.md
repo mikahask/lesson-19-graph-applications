@@ -65,8 +65,12 @@ print(nx.info(G))
 **Solution code:**
 
 ```python
+
+
 mst = nx.minimum_spanning_tree(G)
 print(nx.info(mst))
+
+
 ```
 
 **Output**
