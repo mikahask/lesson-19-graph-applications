@@ -19,6 +19,7 @@ $> pip install networkx
 
 ```python
 import networkx as nx
+import random
 ```
 
 # Band 1 to Band 22
@@ -34,35 +35,27 @@ import networkx as nx
 
 **Setup code**:
 
+# Create an empty graph
+
+```python
+
 G = nx.Graph()
 
 # Add 22 nodes to the graph
 G.add_nodes_from(range(1, 23))
 
-# Add edges between each node and every other node
+# Add edges between each node and every other node with random weights
 for i in range(1, 23):
     for j in range(i + 1, 23):
-        G.add_edge(i, j)
+        weight = random.randint(1, 10)  # Generate a random weight between 1 and 10
+        G.add_edge(i, j, weight=weight)  # Add the edge with the generated weight
 
-# Add edge between last and first node to create a loop
-G.add_edge(22, 1)
+# Add edge between last and first node to create a loop with a random weight
+weight = random.randint(1, 10)  # Generate a random weight between 1 and 10
+G.add_edge(22, 1, weight=weight)  # Add the edge with the generated weight
 
 # Print the graph information
 print(nx.info(G))
-
-
-// Create nodes:
-G=nx.Graph()
-H=nx.path_graph(22)
-G.add_nodes_from(H)
-G.add_node(H)
-
-//Create edges:
-G.add_edge(1,2)
-e=(2,3)
-G.add_edge(*e)
-G.add_edges_from([(1,2),(1,3)])
-```python
 ```
 
 **Visualization**:
@@ -70,6 +63,12 @@ G.add_edges_from([(1,2),(1,3)])
 ![Image goes here](Relative image filename goes here)
 
 **Solution code:**
+
+G = nx.cycle_graph(4)
+G.add_edge(0, 3, weight=2)
+T = nx.minimum_spanning_tree(G)
+sorted(T.edges(data=True))
+[(0, 1, {}), (1, 2, {}), (2, 3, {})]
 
 ```python
 ```
