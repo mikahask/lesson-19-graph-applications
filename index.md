@@ -88,7 +88,9 @@ plt.show()
 **Output**
 
 ```
-print(nx.info(mst))
+plt.axis('off')
+plt.show()
+
 
 ```
 
