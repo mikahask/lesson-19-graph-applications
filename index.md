@@ -3,12 +3,11 @@
 **CISC320 Spring 2023 Lesson 14 - Graph Applications**
 
 Group Members:
-* First member (email)
-* Second member (email)
-* Third member (email)
-* Fourth member (email)
+* Mikaylla Haskins (mikahas@udel.edu)
+* Jillian Camp (jillsue@udel.edu)
+* Grace O'Leary (goleary@udel.edu)
 
-Description of project
+It's a band festival! There are bands playing at a local park, however no band can play directly beside another band, otherwise it'd be too noisy and hard to listen to each individual band's music! Therefore, a float must be placed inbetween each band so that way their music doesn't clash with eachother! Band 1 must also find the shortest path to get to Band 22.
 
 ## Installation Code
 
@@ -22,15 +21,15 @@ $> pip install networkx
 import networkx as nx
 ```
 
-# First Problem Title
+# Band 1 to Band 22
 
-**Informal Description**: 
+**Get Shortest Path From Band 1 to Band 22**: 
 
 > **Formal Description**:
->  * Input:
->  * Output:
+>  * Input: 
+>  * Output: Final graph showcasing shortest path
 
-**Graph Problem/Algorithm**: [DFS/BFS/SSSP/APSP/MST]
+**Graph Problem/Algorithm**: [DFS/BFS/SSSP/APSP/(MST)]
 
 
 **Setup code**:
