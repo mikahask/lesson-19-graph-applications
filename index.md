@@ -76,6 +76,8 @@ print(nx.info(mst))
 **Output**
 
 ```
+print(nx.info(mst))
+
 ```
 
 **Interpretation of Results**:
