@@ -98,3 +98,8 @@ nx.draw(G)
 
 **Interpretation of Results**:
 
+
+
+# Is the parade too noisy? (Graph coloring)
+
+
