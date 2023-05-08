@@ -76,4 +76,4 @@ class Bfs:
                 for u,v 
                 in self.foodTruckMap.edges()
             ]
-
+        
