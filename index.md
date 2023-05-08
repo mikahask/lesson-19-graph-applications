@@ -7,7 +7,7 @@ Group Members:
 * Jillian Camp (jillsue@udel.edu)
 * Grace O'Leary (goleary@udel.edu)
 
-It's a band festival! There are bands playing at a local park, however no band can play directly beside another band, otherwise it'd be too noisy and hard to listen to each individual band's music! Therefore, a float must be placed inbetween each band so that way their music doesn't clash with eachother! Band 1 must also find the shortest path to get to Band 22.
+It's a band festival! There are bands playing at a local park! Each band is named after the alphabet from letters a to v. To get the fullest experience, we've created a map which showcases routes between bands which will allow you to travel to each band within optimal time!
 
 ## Installation Code
 
@@ -21,11 +21,12 @@ import matplotlib.pyplot as plt
 ```python
 import networkx as nx
 import random
+import matplotlib.pyplot as plt
 ```
 
-# Band 1 to Band 22
+# Band a to Band v
 
-**Get Shortest Path From Band 1 to Band 22**: 
+**Minimum spanning tree from band a to band v**: 
 
 > **Formal Description**:
 >  * Input: 
@@ -42,21 +43,45 @@ import random
 
 G = nx.Graph()
 
-# Add 22 nodes to the graph
-G.add_nodes_from(range(1, 23))
+# Add nodes with labels A to V
+for i in range(65, 87):
+    G.add_node(chr(i))
 
-# Add edges between each node and every other node with random weights
-for i in range(1, 23):
-    for j in range(i + 1, 23):
-        weight = random.randint(1, 10)  # Generate a random weight between 1 and 10
-        G.add_edge(i, j, weight=weight)  # Add the edge with the generated weight
+# Add edges to the graph
+G.add_edge('A', 'F', weight=7)
+G.add_edge('A', 'D', weight=5)
+G.add_edge('B', 'C', weight=8)
+G.add_edge('B', 'F', weight=9)
+G.add_edge('B', 'E', weight=7)
+G.add_edge('C', 'G', weight=5)
+G.add_edge('D', 'F', weight=6)
+G.add_edge('D', 'E', weight=15)
+G.add_edge('E', 'F', weight=8)
+G.add_edge('E', 'J', weight=9)
+G.add_edge('F', 'G', weight=11)
+G.add_edge('F', 'H', weight=8)
+G.add_edge('G', 'I', weight=9)
+G.add_edge('H', 'I', weight=7)
+G.add_edge('H', 'L', weight=5)
+G.add_edge('I', 'J', weight=6)
+G.add_edge('I', 'L', weight=12)
+G.add_edge('J', 'K', weight=10)
+G.add_edge('K', 'L', weight=6)
+G.add_edge('L', 'M', weight=8)
+G.add_edge('M', 'N', weight=9)
+G.add_edge('M', 'O', weight=10)
+G.add_edge('N', 'P', weight=6)
+G.add_edge('O', 'P', weight=7)
+G.add_edge('O', 'S', weight=5)
+G.add_edge('P', 'Q', weight=4)
+G.add_edge('Q', 'R', weight=6)
+G.add_edge('R', 'V', weight=9)
+G.add_edge('S', 'T', weight=5)
+G.add_edge('T', 'U', weight=7)
+G.add_edge('U', 'V', weight=8)
 
-# Add edge between last and first node to create a loop with a random weight
-weight = random.randint(1, 10)  # Generate a random weight between 1 and 10
-G.add_edge(22, 1, weight=weight)  # Add the edge with the generated weight
-
-# Print the graph information
-print(nx.info(G))
+# Define edge labels
+edge_labels = nx.get_edge_attributes(G, 'weight')
 ```
 
 **Visualization**:
