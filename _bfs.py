@@ -65,15 +65,18 @@ class Bfs:
         self.foodTruckMap.add_nodes_from(foodTrucks)
         self.foodTruckMap.add_edges_from(edges)
 
-        # create a distance of the edge between each food truck
-        print(self.foodTruckMap)
+        #compute the shortest path stating at A to the food trucks, using bsf
+        shortest = nx.bfs_tree(self.foodTruckMap, foodTrucks[0], False, len(self.foodTruckMap))
 
-        def shortestPath(self):
+       #Draw graph
+
+        """ def shortestPath(self):
         
             nx.bfs_tree(self.foodTruckMap)
             distances = [
                 self.foodTruckMap[u][v]['distance'] 
                 for u,v 
                 in self.foodTruckMap.edges()
-            ]
+            ] """
+
         
