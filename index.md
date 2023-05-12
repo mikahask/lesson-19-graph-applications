@@ -14,6 +14,7 @@ It's a band festival! There are bands playing at a local park! Each band is name
 ```sh
 $> pip install networkx
 import matplotlib.pyplot as plt
+import startinggraph.png
 ```
 
 ## Python Environment Setup
