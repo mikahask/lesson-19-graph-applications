@@ -86,7 +86,7 @@ edge_labels = nx.get_edge_attributes(G, 'weight')
 
 **Visualization**:
 
-![Image goes here](Relative image filename goes here)
+![startinggraph.png](Relative image filename goes here)
 
 **Solution code:**
 
