@@ -102,6 +102,8 @@ nx.draw(G)
 
 # Is the parade too noisy? (Graph coloring)
 
+**Algorithm: DFS** 
+
 > **Formal Description**:
 >  * Input: A graph.
 >  * Output: A boolean telling whether or not the graph is bipartite (two-colorable).
