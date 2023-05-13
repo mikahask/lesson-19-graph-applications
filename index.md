@@ -21,7 +21,6 @@ import startinggraph.png
 
 ```python
 import networkx as nx
-import random
 import matplotlib.pyplot as plt
 ```
 
@@ -30,8 +29,8 @@ import matplotlib.pyplot as plt
 **Minimum spanning tree from band a to band v**: 
 
 > **Formal Description**:
->  * Input: 
->  * Output: Final graph showcasing shortest path
+>  * Input: Band Festival Map
+>  * Output: Final graph showcasing Minimum Spanning Tree of Band Festival Map
 
 **Graph Problem/Algorithm**: [DFS/BFS/SSSP/APSP/(MST)]
 
@@ -46,40 +45,40 @@ G = nx.Graph()
 
 # Add nodes with labels A to V
 for i in range(65, 87):
-    G.add_node(chr(i))
+    G.add_node('Band ' + chr(i))
 
 # Add edges to the graph
-G.add_edge('A', 'F', weight=7)
-G.add_edge('A', 'D', weight=5)
-G.add_edge('B', 'C', weight=8)
-G.add_edge('B', 'F', weight=9)
-G.add_edge('B', 'E', weight=7)
-G.add_edge('C', 'G', weight=5)
-G.add_edge('D', 'F', weight=6)
-G.add_edge('D', 'E', weight=15)
-G.add_edge('E', 'F', weight=8)
-G.add_edge('E', 'J', weight=9)
-G.add_edge('F', 'G', weight=11)
-G.add_edge('F', 'H', weight=8)
-G.add_edge('G', 'I', weight=9)
-G.add_edge('H', 'I', weight=7)
-G.add_edge('H', 'L', weight=5)
-G.add_edge('I', 'J', weight=6)
-G.add_edge('I', 'L', weight=12)
-G.add_edge('J', 'K', weight=10)
-G.add_edge('K', 'L', weight=6)
-G.add_edge('L', 'M', weight=8)
-G.add_edge('M', 'N', weight=9)
-G.add_edge('M', 'O', weight=10)
-G.add_edge('N', 'P', weight=6)
-G.add_edge('O', 'P', weight=7)
-G.add_edge('O', 'S', weight=5)
-G.add_edge('P', 'Q', weight=4)
-G.add_edge('Q', 'R', weight=6)
-G.add_edge('R', 'V', weight=9)
-G.add_edge('S', 'T', weight=5)
-G.add_edge('T', 'U', weight=7)
-G.add_edge('U', 'V', weight=8)
+G.add_edge('Band A', 'Band F', weight=7)
+G.add_edge('Band A', 'Band D', weight=5)
+G.add_edge('Band B', 'Band C', weight=8)
+G.add_edge('Band B', 'BandF', weight=9)
+G.add_edge('Band B', 'Band E', weight=7)
+G.add_edge('Band C', 'Band G', weight=5)
+G.add_edge('Band D', 'Band F', weight=6)
+G.add_edge('Band D', 'Band E', weight=15)
+G.add_edge('Band E', 'Band F', weight=8)
+G.add_edge('Band E', 'Band J', weight=9)
+G.add_edge('Band F', 'Band G', weight=11)
+G.add_edge('Band F', 'Band H', weight=8)
+G.add_edge('Band G', 'Band I', weight=9)
+G.add_edge('Band H', 'Band I', weight=7)
+G.add_edge('Band H', 'Band L', weight=5)
+G.add_edge('Band I', 'Band J', weight=6)
+G.add_edge('Band I', 'Band L', weight=12)
+G.add_edge('Band J', 'Band K', weight=10)
+G.add_edge('Band K', 'Band L', weight=6)
+G.add_edge('Band L', 'Band M', weight=8)
+G.add_edge('Band M', 'Band N', weight=9)
+G.add_edge('Band M', 'Band O', weight=10)
+G.add_edge('Band N', 'Band P', weight=6)
+G.add_edge('Band O', 'Band P', weight=7)
+G.add_edge('Band O', 'Band S', weight=5)
+G.add_edge('Band P', 'Band Q', weight=4)
+G.add_edge('Band Q', 'Band R', weight=6)
+G.add_edge('Band R', 'Band V', weight=9)
+G.add_edge('Band S', 'Band T', weight=5)
+G.add_edge('Band T', 'Band U', weight=7)
+G.add_edge('Band U', 'Band V', weight=8)
 
 # Define edge labels
 edge_labels = nx.get_edge_attributes(G, 'weight')
@@ -93,34 +92,26 @@ edge_labels = nx.get_edge_attributes(G, 'weight')
 
 ```python
 
+# Compute the minimum spanning tree from node A to V
+T = nx.algorithms.tree.minimum_spanning_tree(G.subgraph(nx.node_connected_component(G, 'Band A')), weight='weight')
 
-pos = nx.circular_layout(G)
-
-# Get the weights of the edges
-weights = [G[u][v]['weight'] for u,v in G.edges()]
-
-# Draw the nodes and edges of the graph
+# Draw the graph and tree
+pos = nx.spring_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='lightblue')
 nx.draw_networkx_labels(G, pos)
-nx.draw_networkx_edges(G, pos, width=weights)
-
-# Show the graph
-plt.axis('off')
-plt.show()
-nx.draw(G)
-
+nx.draw_networkx_edges(G, pos)
+nx.draw_networkx_edges(T, pos, edge_color='red', width=2)
 
 ```
 
 **Output**
 
-```
-plt.axis('off')
+```python
+# plot graph
 plt.show()
-nx.draw(G)
 
 
 ```
 
 **Interpretation of Results**:
-
+These results indicate the optimal routes from each band to get from one band to another with the shortest amount of distance as possible. This graph has accomplished the goal of a minimum spanning tree.
