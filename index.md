@@ -126,7 +126,7 @@ print(is_bipartite(G))
 ```
 
 **Visualization**:
-![Image goes here](Relative image filename goes here)
+![Image goes here](Figure_1.png)
 
 **solution code** 
 ```python
