@@ -115,3 +115,70 @@ plt.show()
 
 **Interpretation of Results**:
 These results indicate the optimal routes from each band to get from one band to another with the shortest amount of distance as possible. This graph has accomplished the goal of a minimum spanning tree.
+
+
+
+# Is the parade too noisy? (Graph coloring)
+
+> **Formal Description**:
+>  * Input: A graph.
+>  * Output: A boolean telling whether or not the graph is bipartite (two-colorable).
+
+**Setup code**
+
+# Create an empty graph
+
+```python
+
+# Create an empty graph
+
+```python
+
+G = nx.Graph()
+
+
+# Print the graph information
+print(nx.info(G))
+# Call the function that executes the algorithm on this graph, G. 
+print(is_bipartite(G))
+```
+
+**Visualization**:
+![Image goes here](Figure_1.png)
+
+**solution code** 
+```python
+
+def is_bipartite(graph):
+    """
+    Returns True if the given graph is bipartite, and False otherwise.
+    """
+    # Start DFS from an arbitrary node in the graph
+    start_node = next(iter(graph.nodes()))
+    visited = {start_node: 0}  # mark the start node as visited and assign it to set 0
+    stack = [start_node]
+
+    # Perform DFS while maintaining the visited set and the set assignments
+    while stack:
+        node = stack.pop()
+        node_set = visited[node]
+
+        # Assign the opposite color to all unvisited neighbors
+        for neighbor in graph.neighbors(node):
+            if neighbor not in visited:
+                visited[neighbor] = 1 - node_set
+                stack.append(neighbor)
+            elif visited[neighbor] == node_set:
+                # If a neighbor has the same color as the current node, the graph is not bipartite
+                return False
+
+    # If we've visited all nodes without conflicts, the graph is bipartite
+    return True
+```
+**Output**
+
+```python 
+True 
+```
+
+**Interpretation of results**
