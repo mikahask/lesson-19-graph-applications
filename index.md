@@ -131,14 +131,16 @@ These results indicate the optimal routes from each band to get from one band to
 
 **Setup code**
 
-# Create an empty graph
-
-```python
-
-# Create an empty graph
+# Create a graph
 
 G = nx.Graph()
-
+G.add_nodes_from(range(20))
+for i in range(20):
+    for j in range(i+1, 20):
+        G.add_edge(i, j)
+pos = {i: (i % 10, i // 10) if i < 10 else ((i-10) % 10, (i-10) // 10 + 1) for i in range(20)}
+nx.draw(G, pos=pos, with_labels=True)    
+plt.show() # show the plot
 
 # Print the graph information
 print(nx.info(G))
@@ -181,7 +183,7 @@ def is_bipartite(graph):
 **Output**
 
 ```python 
-True 
+True
 ```
 
 **Interpretation of results**
