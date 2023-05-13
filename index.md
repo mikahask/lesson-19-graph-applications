@@ -96,11 +96,6 @@ edge_labels = nx.get_edge_attributes(G, 'weight')
 T = nx.algorithms.tree.minimum_spanning_tree(G.subgraph(nx.node_connected_component(G, 'Band A')), weight='weight')
 
 # Draw the graph and tree
-pos = nx.spring_layout(G)
-nx.draw_networkx_nodes(G, pos, node_color='lightblue')
-nx.draw_networkx_labels(G, pos)
-nx.draw_networkx_edges(G, pos)
-nx.draw_networkx_edges(T, pos, edge_color='red', width=2)
 
 ```
 
@@ -108,6 +103,16 @@ nx.draw_networkx_edges(T, pos, edge_color='red', width=2)
 
 ```python
 # plot graph
+# Draw the graph and tree
+pos = nx.spring_layout(G)
+nx.draw(G, pos, with_labels=True)
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+plt.show()
+pos = nx.spring_layout(G)
+nx.draw_networkx_nodes(G, pos, node_color='lightblue')
+nx.draw_networkx_labels(G, pos)
+nx.draw_networkx_edges(G, pos)
+nx.draw_networkx_edges(T, pos, edge_color='red', width=2)
 plt.show()
 
 
@@ -131,8 +136,6 @@ These results indicate the optimal routes from each band to get from one band to
 ```python
 
 # Create an empty graph
-
-```python
 
 G = nx.Graph()
 
