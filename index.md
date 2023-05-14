@@ -125,6 +125,8 @@ These results indicate the optimal routes from each band to get from one band to
 
 # Is the parade too noisy? (Graph coloring)
 
+**Algorithm: DFS** 
+
 > **Formal Description**:
 >  * Input: A graph.
 >  * Output: A boolean telling whether or not the graph is bipartite (two-colorable).
@@ -189,3 +191,118 @@ True
 ```
 
 **Interpretation of results**
+
+
+# Food Truck Fest! 
+
+**Algorithm: BFS** 
+
+> **Formal Description**:
+>  * Input: A graph of various food trucks.
+>  * Output: A list giving the shortest path to take to get from the food truck Bites on Wheels to the food truck Truckin Tacos
+
+
+## Python Environment Setup
+
+# Create __main__.py file
+ ```python
+from _bfs import Bfs
+
+bfs = Bfs()
+
+bfs.run()
+```
+# Create _bfs.py file
+
+import networkx as nx
+
+import random
+
+# Create a graph
+```python
+#in the _bfs.py file
+class Bfs:
+    def __init__(self) -> None:
+        self.foodTruckMap = None
+
+    def run(self) -> None:
+        '''
+        Make a graph which finds the shortest path using the bfs algorithm...
+        There are a bunch of food trucks and you want to find the shortest path from Bites on Wheels to Truckin Tacos.
+        '''
+        self.foodTruckMap = nx.Graph()
+        '''The food trucks'''
+        foodTrucks = [
+            'Bites on Wheels','The Hungry Truck','Rolling Delights','Foodie Roadster','The Flavor Wagon','Street Grub Hub',
+            'Mobile Munchies','Ada Eats','The Roaming Kitchen','Curbside Cuisine','Chowmobile','The Taste Truck','Rolling Kitchen','Food Truckin','Fork in the Road',
+            'Eat Street','Tasty Trailers','Grubmobile','Flavor Fleet','Culinary Cruiser',
+            'Kitchen on Wheels','Mobile Meals','The Rolling Cookhouse','Truckin Tacos'
+        ]
+
+        edges= [
+                ("Bites on Wheels" , "The Hungry Truck", {"distance": random.randint(1,10)}), 
+                ("Bites on Wheels" , "Foodie Roadster", {"distance": random.randint(1,10)}),
+                ("The Hungry Truck" , "The Flavor Wagon", {"distance": random.randint(1,10)}),
+                ("The Hungry Truck" , "Rolling Delights", {"distance": random.randint(1,10)}),
+                ("Foodie Roadster" , "Street Grub Hub", {"distance": random.randint(1,10)}),
+                ("Foodie Roadster" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+                ("The Flavor Wagon" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+                ("The Flavor Wagon" , "Foodie Roadster", {"distance": random.randint(1,10)}),
+                ("The Flavor Wagon" , "Ada Eats", {"distance": random.randint(1,10)}),
+                ("Ada Eats" , "Rolling Kitchen", {"distance": random.randint(1,10)}),
+                ("Rolling Delights" , "The Roaming Kitchen", {"distance": random.randint(1,10)}),
+                ("Rolling Delights" , "Curbside Cuisine", {"distance": random.randint(1,10)}),
+                ("Bites on Wheels" , "Chowmobile", {"distance": random.randint(1,10)}),
+                ("Chowmobile" , "The Taste Truck", {"distance": random.randint(1,10)}),
+                ("The Taste Truck" , "Curbside Cuisine", {"distance": random.randint(1,10)}),
+                ("The Roaming Kitchen" , "Rolling Kitchen", {"distance": random.randint(1,10)}),
+                ("Rolling Kitchen" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+                ("Curbside Cuisine" , "Grubmobile", {"distance": random.randint(1,10)}),
+                ("Food Truckin" , "Fork in the Road", {"distance": random.randint(1,10)}),
+                ("Rolling Kitchen" , "Eat Street", {"distance": random.randint(1,10)}),
+                ("Eat Street" , "Fork in the Road", {"distance": random.randint(1,10)}),
+                ("Fork in the Road" , "Chowmobile", {"distance": random.randint(1,10)}),
+                ("Fork in the Road" , "Tasty Trailers", {"distance": random.randint(1,10)}),
+                ("Street Grub Hub" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+                ("Eat Street" , "The Roaming Kitchen", {"distance": random.randint(1,10)}),
+                ("Curbside Cuisine" , "Tasty Trailers", {"distance": random.randint(1,10)}),
+                ("Mobile Munchies" , "Grubmobile", {"distance": random.randint(1,10)}),
+                ("Grubmobile" , "Flavor Fleet", {"distance": random.randint(1,10)}),
+                ("Fork in the Road" , "Flavor Fleet", {"distance": random.randint(1,10)}),
+                ("Flavor Fleet" , "Culinary Cruiser", {"distance": random.randint(1,10)}),
+                ("Culinary Cruiser" , "Grubmobile", {"distance": random.randint(1,10)}),
+                ("Grubmobile" , "Kitchen on Wheels", {"distance": random.randint(1,10)}),
+                ("Kitchen on Wheels" , "Mobile Meals", {"distance": random.randint(1,10)}),
+                ("Mobile Munchies" , "The Rolling Cookhouse", {"distance": random.randint(1,10)}),
+                ("The Rolling Cookhouse" , "Truckin Tacos", {"distance": random.randint(1,10)}),
+                ("Truckin Tacos" , "Mobile Meals", {"distance": random.randint(1,10)}),
+                ("Truckin Tacos" , "Grubmobile", {"distance": random.randint(1,10)})  
+            ]
+
+        # add all the food trucks to the graph
+        self.foodTruckMap.add_nodes_from(foodTrucks)
+        self.foodTruckMap.add_edges_from(edges)
+```
+
+**Visualization**:
+
+![foodTruckMap.png](foodTruckMap.png)
+
+
+**Solution code** 
+
+```python
+#Returns a list of the shortest path of food trucks
+solution = [p for p in nx.shortest_path(self.foodTruckMap, source='Bites on Wheels', target='Truckin Tacos')]
+print(solution)
+```
+**Output**
+
+```python 
+['Bites on Wheels','Foodie Roadster','Mobile Munchies','The Rolling Cookhouse','Truckin Tacos']
+```
+
+**Interpretation of results**
+
+These results provide you with the quickest way to get from the Bites on Wheels food truck to the Trucking Tacos food truck.
+This graph has succesfully found the shortest path using the BFS algorithm. 
