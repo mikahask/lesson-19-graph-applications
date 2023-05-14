@@ -276,7 +276,8 @@ class Bfs:
 
 **Visualization**:
 
-![foodTruckMap.png]([F.png])
+![foodTruckMap.png](foodTruckMap)
+
 
 **solution code** 
 
@@ -292,5 +293,6 @@ print(solution)
 ```
 
 **Interpretation of results**
+
 These results provide you with the quickest way to get from the Bites on Wheels food truck to the Trucking Tacos food truck.
 This graph has succesfully found the shortest path using the BFS algorithm. 
