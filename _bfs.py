@@ -17,48 +17,50 @@ class Bfs:
         '''
         self.foodTruckMap = nx.Graph()
         foodTrucks = [
-            'A','B','C','D','E','F','G','H','I','J','K','L',
-            'M','N','O','P','Q','R','S','T','U','V','W','X'
+            'Bites on Wheels','The Hungry Truck','Rolling Delights','Foodie Roadster','The Flavor Wagon','Street Grub Hub',
+            'Mobile Munchies','Ada Eats','The Roaming Kitchen','Curbside Cuisine','Chowmobile','The Taste Truck','Rolling Kitchen','Food Truckin','Fork in the Road',
+            'Eat Street','Tasty Trailers','Grubmobile','Flavor Fleet','Culinary Cruiser',
+            'Kitchen on Wheels','Mobile Meals','The Rolling Cookhouse','Truckin Tacos'
         ]
         
         edges= [
-            ("A" , "B", {"distance": random.randint(1,10)}), 
-            ("A" , "D", {"distance": random.randint(1,10)}),
-            ("B" , "E", {"distance": random.randint(1,10)}),
-            ("B" , "C", {"distance": random.randint(1,10)}),
-            ("D" , "F", {"distance": random.randint(1,10)}),
-            ("D" , "G", {"distance": random.randint(1,10)}),
-            ("E" , "G", {"distance": random.randint(1,10)}),
-            ("E" , "D", {"distance": random.randint(1,10)}),
-            ("E" , "H", {"distance": random.randint(1,10)}),
-            ("H" , "M", {"distance": random.randint(1,10)}),
-            ("C" , "I", {"distance": random.randint(1,10)}),
-            ("C" , "J", {"distance": random.randint(1,10)}),
-            ("A" , "K", {"distance": random.randint(1,10)}),
-            ("K" , "L", {"distance": random.randint(1,10)}),
-            ("L" , "J", {"distance": random.randint(1,10)}),
-            ("I" , "M", {"distance": random.randint(1,10)}),
-            ("M" , "G", {"distance": random.randint(1,10)}),
-            ("J" , "N", {"distance": random.randint(1,10)}),
-            ("N" , "O", {"distance": random.randint(1,10)}),
-            ("M" , "P", {"distance": random.randint(1,10)}),
-            ("P" , "O", {"distance": random.randint(1,10)}),
-            ("O" , "K", {"distance": random.randint(1,10)}),
-            ("O" , "Q", {"distance": random.randint(1,10)}),
-            ("F" , "G", {"distance": random.randint(1,10)}),
-            ("P" , "I", {"distance": random.randint(1,10)}),
-            ("J" , "Q", {"distance": random.randint(1,10)}),
-            ("G" , "R", {"distance": random.randint(1,10)}),
-            ("R" , "S", {"distance": random.randint(1,10)}),
-            ("O" , "S", {"distance": random.randint(1,10)}),
-            ("S" , "T", {"distance": random.randint(1,10)}),
-            ("T" , "R", {"distance": random.randint(1,10)}),
-            ("R" , "U", {"distance": random.randint(1,10)}),
-            ("U" , "V", {"distance": random.randint(1,10)}),
-            ("G" , "W", {"distance": random.randint(1,10)}),
-            ("W" , "X", {"distance": random.randint(1,10)}),
-            ("X" , "V", {"distance": random.randint(1,10)}),
-            ("X" , "R", {"distance": random.randint(1,10)})  
+            ("Bites on Wheels" , "The Hungry Truck", {"distance": random.randint(1,10)}), 
+            ("Bites on Wheels" , "Foodie Roadster", {"distance": random.randint(1,10)}),
+            ("The Hungry Truck" , "The Flavor Wagon", {"distance": random.randint(1,10)}),
+            ("The Hungry Truck" , "Rolling Delights", {"distance": random.randint(1,10)}),
+            ("Foodie Roadster" , "Street Grub Hub", {"distance": random.randint(1,10)}),
+            ("Foodie Roadster" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+            ("The Flavor Wagon" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+            ("The Flavor Wagon" , "Foodie Roadster", {"distance": random.randint(1,10)}),
+            ("The Flavor Wagon" , "Ada Eats", {"distance": random.randint(1,10)}),
+            ("Ada Eats" , "Rolling Kitchen", {"distance": random.randint(1,10)}),
+            ("Rolling Delights" , "The Roaming Kitchen", {"distance": random.randint(1,10)}),
+            ("Rolling Delights" , "Curbside Cuisine", {"distance": random.randint(1,10)}),
+            ("Bites on Wheels" , "Chowmobile", {"distance": random.randint(1,10)}),
+            ("Chowmobile" , "The Taste Truck", {"distance": random.randint(1,10)}),
+            ("The Taste Truck" , "Curbside Cuisine", {"distance": random.randint(1,10)}),
+            ("The Roaming Kitchen" , "Rolling Kitchen", {"distance": random.randint(1,10)}),
+            ("Rolling Kitchen" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+            ("Curbside Cuisine" , "", {"distance": random.randint(1,10)}),
+            ("Food Truckin" , "Fork in the Road", {"distance": random.randint(1,10)}),
+            ("Rolling Kitchen" , "Eat Street", {"distance": random.randint(1,10)}),
+            ("Eat Street" , "Fork in the Road", {"distance": random.randint(1,10)}),
+            ("Fork in the Road" , "Chowmobile", {"distance": random.randint(1,10)}),
+            ("Fork in the Road" , "Tasty Trailers", {"distance": random.randint(1,10)}),
+            ("Street Grub Hub" , "Mobile Munchies", {"distance": random.randint(1,10)}),
+            ("Eat Street" , "The Roaming Kitchen", {"distance": random.randint(1,10)}),
+            ("Curbside Cuisine" , "Tasty Trailers", {"distance": random.randint(1,10)}),
+            ("Mobile Munchies" , "Grubmobile", {"distance": random.randint(1,10)}),
+            ("Grubmobile" , "Flavor Fleet", {"distance": random.randint(1,10)}),
+            ("Fork in the Road" , "Flavor Fleet", {"distance": random.randint(1,10)}),
+            ("Flavor Fleet" , "Culinary Cruiser", {"distance": random.randint(1,10)}),
+            ("Culinary Cruiser" , "Grubmobile", {"distance": random.randint(1,10)}),
+            ("Grubmobile" , "Kitchen on Wheels", {"distance": random.randint(1,10)}),
+            ("Kitchen on Wheels" , "Mobile Meals", {"distance": random.randint(1,10)}),
+            ("Mobile Munchies" , "The Rolling Cookhouse", {"distance": random.randint(1,10)}),
+            ("The Rolling Cookhouse" , "Truckin Tacos", {"distance": random.randint(1,10)}),
+            ("Truckin Tacos" , "Mobile Meals", {"distance": random.randint(1,10)}),
+            ("Truckin Tacos" , "Grubmobile", {"distance": random.randint(1,10)})  
         ]
 
         # add all the food trucks to the graph
@@ -70,16 +72,8 @@ class Bfs:
 
         #solution code
         #sorted = nx.all_shortest_paths(self.foodTruckmap)
-        solution = [p for p in nx.shortest_path(self.foodTruckMap, source='A', target='X')]
+        solution = [p for p in nx.shortest_path(self.foodTruckMap, source='Bites on Wheels', target='Truckin Tacos')]
         print(solution)
 
-        """ def shortestPath(self):
-        
-            nx.bfs_tree(self.foodTruckMap)
-            distances = [
-                self.foodTruckMap[u][v]['distance'] 
-                for u,v 
-                in self.foodTruckMap.edges()
-            ] """
 
         
