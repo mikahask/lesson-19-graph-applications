@@ -1,11 +1,8 @@
-import matplotlib.pyplot as plt
 import networkx as nx
 import random
-from enum import Enum
 
 class Bfs:
     def __init__(self) -> None:
-        '''It's a food festival! '''
         self.foodTruckMap = None
 
     def run(self) -> None:
@@ -41,7 +38,7 @@ class Bfs:
             ("The Taste Truck" , "Curbside Cuisine", {"distance": random.randint(1,10)}),
             ("The Roaming Kitchen" , "Rolling Kitchen", {"distance": random.randint(1,10)}),
             ("Rolling Kitchen" , "Mobile Munchies", {"distance": random.randint(1,10)}),
-            ("Curbside Cuisine" , "", {"distance": random.randint(1,10)}),
+            ("Curbside Cuisine" , "Grubmobile", {"distance": random.randint(1,10)}),
             ("Food Truckin" , "Fork in the Road", {"distance": random.randint(1,10)}),
             ("Rolling Kitchen" , "Eat Street", {"distance": random.randint(1,10)}),
             ("Eat Street" , "Fork in the Road", {"distance": random.randint(1,10)}),
@@ -68,11 +65,12 @@ class Bfs:
         self.foodTruckMap.add_edges_from(edges)
 
         #graph visual
-        bfsGraph = '/lesson-19-graph-applications/graphviz.svg'
+        bfsGraph = 'foodTruckMap.png'
+        print(bfsGraph)
 
         #solution code
-        #sorted = nx.all_shortest_paths(self.foodTruckmap)
         solution = [p for p in nx.shortest_path(self.foodTruckMap, source='Bites on Wheels', target='Truckin Tacos')]
+        print('The shortest path to follow is: ')
         print(solution)
 
 
