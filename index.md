@@ -201,16 +201,25 @@ True
 >  * Input: A graph of various food trucks.
 >  * Output: A list giving the shortest path to take to get from the food truck Bites on Wheels to the food truck Truckin Tacos
 
+
 ## Python Environment Setup
+
+# Create __main__.py file
+ 
+from _bfs import Bfs
+
+bfs = Bfs()
+bfs.run()
+
+# Create _bfs.py file
 
 import networkx as nx
 
 import random
 
-
 # Create a graph
 
-```python
+```in the _bfs.py file
 class Bfs:
     def __init__(self) -> None:
         self.foodTruckMap = None
@@ -279,7 +288,7 @@ class Bfs:
 ![foodTruckMap.png](foodTruckMap.png)
 
 
-**solution code** 
+**Solution code** 
 
 ```python
 #Returns a list of the shortest path of food trucks
