@@ -276,7 +276,7 @@ class Bfs:
 
 **Visualization**:
 
-![foodTruckMap.png](foodTruckMap)
+![foodTruckMap.png](foodTruckMap.png)
 
 
 **solution code** 
