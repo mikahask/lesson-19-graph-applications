@@ -182,7 +182,7 @@ print(is_bipartite(G))
 ```
 
 **Visualization**:
-![my_graph.png](Figure_1.png)
+![my_graph.png](bipartite_graph.png)
 
 **solution code** 
 ```python
