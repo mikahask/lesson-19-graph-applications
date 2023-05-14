@@ -1,9 +1,10 @@
-from matplotlib import pyplot as plt
 import networkx as nx
-'''
+import matplotlib.pyplot as plt
+
+
 def is_bipartite(graph):
     """
-    Returns True if the given graph is bipartite, and False otherwise.
+    Returns a message indicating whether the given graph is bipartite or not.
     """
     # Start DFS from an arbitrary node in the graph
     start_node = next(iter(graph.nodes()))
@@ -22,28 +23,19 @@ def is_bipartite(graph):
                 stack.append(neighbor)
             elif visited[neighbor] == node_set:
                 # If a neighbor has the same color as the current node, the graph is not bipartite
-                return False
+                return "The graph is not bipartite"
 
     # If we've visited all nodes without conflicts, the graph is bipartite
-    return True
-'''
-
-# create an empty graph
+    return "The graph is bipartite"
 G = nx.Graph()
-
-# add 20 nodes to the graph
 G.add_nodes_from(range(20))
-
-# add edges to the graph
 for i in range(20):
     for j in range(i+1, 20):
         G.add_edge(i, j)
-pos = nx.spring_layout(G) # position the nodes using a spring layout algorithm
+
+# arrange the nodes in two straight lines
+pos = {i: (i % 10, i // 10) if i < 10 else ((i-10) % 10, (i-10) // 10 + 1) for i in range(20)}
 nx.draw(G, pos=pos, with_labels=True) # draw the nodes and edges
-plt.show() # show the plot
-       
 
 # Check if the graph is bipartite
-#print(is_bipartite(G))
-
-
+print(is_bipartite(G))
