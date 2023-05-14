@@ -205,12 +205,13 @@ True
 ## Python Environment Setup
 
 # Create __main__.py file
- 
+ ```python
 from _bfs import Bfs
 
 bfs = Bfs()
-bfs.run()
 
+bfs.run()
+```
 # Create _bfs.py file
 
 import networkx as nx
@@ -218,8 +219,8 @@ import networkx as nx
 import random
 
 # Create a graph
-
-```in the _bfs.py file
+```python
+#in the _bfs.py file
 class Bfs:
     def __init__(self) -> None:
         self.foodTruckMap = None
