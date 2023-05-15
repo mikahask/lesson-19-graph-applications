@@ -182,7 +182,7 @@ print(is_bipartite(G))
 ```
 
 **Visualization**:
-![my_graph.png](bipartite_graph.png)
+![my_graph.png](spring.png)
 
 **solution code** 
 ```python
@@ -190,6 +190,9 @@ print(is_bipartite(G))
 def is_bipartite(graph):
     """
     Returns True if the given graph is bipartite, and False otherwise.
+    """
+    """
+    Returns a message indicating whether the given graph is bipartite or not.
     """
     # Start DFS from an arbitrary node in the graph
     start_node = next(iter(graph.nodes()))
@@ -208,15 +211,15 @@ def is_bipartite(graph):
                 stack.append(neighbor)
             elif visited[neighbor] == node_set:
                 # If a neighbor has the same color as the current node, the graph is not bipartite
-                return False
+                return "The graph is not bipartite"
 
     # If we've visited all nodes without conflicts, the graph is bipartite
-    return True
+    return "The graph is bipartite"
 ```
 **Output**
 
 ```python 
-True
+The graph is bipartite
 ```
 
 **Interpretation of results**

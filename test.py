@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import random
 
 
 def is_bipartite(graph):
@@ -27,15 +28,26 @@ def is_bipartite(graph):
 
     # If we've visited all nodes without conflicts, the graph is bipartite
     return "The graph is bipartite"
+# Set the number of nodes
+num_nodes = 20
+
+
 G = nx.Graph()
-G.add_nodes_from(range(20))
-for i in range(20):
-    for j in range(i+1, 20):
-        G.add_edge(i, j)
 
-# arrange the nodes in two straight lines
-pos = {i: (i % 10, i // 10) if i < 10 else ((i-10) % 10, (i-10) // 10 + 1) for i in range(20)}
-nx.draw(G, pos=pos, with_labels=True) # draw the nodes and edges
+# Add two sets of nodes, each with num_nodes/2 vertices
+G.add_nodes_from(range(num_nodes//2), bipartite=0)
+G.add_nodes_from(range(num_nodes//2, num_nodes), bipartite=1)
 
-# Check if the graph is bipartite
+edges = []
+for i in range(num_nodes//2):
+    neighbors = random.sample(range(num_nodes//2, num_nodes), random.randint(1, num_nodes//2-1))
+    edges += [(i, j) for j in neighbors]
+G.add_edges_from(edges)
+
+# Assign a color to each node based on its bipartite set
+color_map = ['red' if G.nodes[n]['bipartite'] == 0 else 'blue' for n in G.nodes()]
+
+# Draw the bipartite graph with labels and colors using a spring layout
+pos = nx.spring_layout(G, seed=42)
+nx.draw(G, pos, with_labels=True, node_color=color_map)
 print(is_bipartite(G))
