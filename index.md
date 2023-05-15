@@ -166,18 +166,27 @@ These results indicate the optimal routes from each band to get from one band to
 
 ```python
 
-G = nx.Graph()
-G.add_nodes_from(range(20))
-for i in range(20):
-    for j in range(i+1, 20):
-        G.add_edge(i, j)
-pos = {i: (i % 10, i // 10) if i < 10 else ((i-10) % 10, (i-10) // 10 + 1) for i in range(20)}
-nx.draw(G, pos=pos, with_labels=True)    
-plt.show() # show the plot
+num_nodes = 20
 
-# Print the graph information
-print(nx.info(G))
-# Call the function that executes the algorithm on this graph, G. 
+
+G = nx.Graph()
+
+# Add two sets of nodes, each with num_nodes/2 vertices
+G.add_nodes_from(range(num_nodes//2), bipartite=0)
+G.add_nodes_from(range(num_nodes//2, num_nodes), bipartite=1)
+
+edges = []
+for i in range(num_nodes//2):
+    neighbors = random.sample(range(num_nodes//2, num_nodes), random.randint(1, num_nodes//2-1))
+    edges += [(i, j) for j in neighbors]
+G.add_edges_from(edges)
+
+# Assign a color to each node
+color_map = ['red' if G.nodes[n]['bipartite'] == 0 else 'blue' for n in G.nodes()]
+
+pos = nx.spring_layout(G, seed=42)
+nx.draw(G, pos, with_labels=True, node_color=color_map)
+# Call the function on this graph, G
 print(is_bipartite(G))
 ```
 
