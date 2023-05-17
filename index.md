@@ -141,11 +141,9 @@ plt.show()
 
 **Output**
 
-```python
 ![finalmst.png](finalmst.png)
 
 
-```
 
 **Interpretation of Results**:
 These results indicate the optimal routes from each band to get from one band to another with the shortest amount of distance as possible. This graph has accomplished the goal of a minimum spanning tree.
